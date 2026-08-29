@@ -1,0 +1,78 @@
+The C++ Standard Template Library (STL) provides a collection of template-based classes and functions for handling data structures, algorithms, and iterators. It is broadly divided into three main components:
+
+a. Containers
+Containers are data structures that store and manage collections of objects. They are of three types:
+Sequence Containers 
+    These store elements in a linear sequence. eg. Arrays, Vectors, Deque, List, Forward List, Stack
+Associative Containers
+    These store elements in a sorted order and allow fast retrieval using keys. eg. Set, Multiset, Map, Multimap
+Unordered Containers
+    These store elements in an unordered manner using hash tables. eg. Unordered Set, Unordered Multiset, Unordered Map,etc.
+
+
+b. Algorithms
+STL provides a wide range of built-in algorithms to operate on containers, such as:
+    Searching, Sorting, Modifying, Counting, etc.
+
+
+c. Iterators
+Iterators act as pointers to access elements in a container. They are used to traverse containers and apply algorithms. Types of iterators include:
+    Input Iterator: Read-only access, one-pass traversal.
+    Output Iterator: Write-only access, one-pass traversal.
+    Forward Iterator: Read/write access, multi-pass traversal.
+    Random Access Iterator: Allows random access, e.g., in vector and deque. Supports increment (++), decrement (--), arithmetic operations (+, -, +=, -=), and comparison operators (<, <=, >, >=). Used for containers that allow direct access to elements via an index, like Arrays, Vectors or even raw arrays(defined without stl library)
+    Bidirectional Iterator: Supports only increment (++) and decrement (--). Found in containers where traversal can move forward and backward such as Linked List, Set, Map
+
+STL is a toolbox. Use only what’s minimal and efficient for the problem.
+
+
+
+
+
+
+
+
+// Unordered Map
+Think of unordered_map as a hash table
+C++ unordered_map<K, V> is internally a hash table:
+    Key K is passed through a hash function → gives us a hash value.
+    That hash value is modulo’d by bucket count → gives bucket index.
+    In that bucket, the key-value pair is stored (usually in a linked list or chain).
+
+Visualize it like this:
+    unordered_map<int, string> umap;
+    umap[10] = "Anand";
+    umap[20] = "Shete";
+    umap[30] = "Mate";
+
+Internal structure (simplified):
+    Bucket 0: [ ]
+    Bucket 1: [10 => "Anand"]
+    Bucket 2: [20 => "Shete"]
+    Bucket 3: [30 => "Mate"]
+    Bucket 4: [ ]
+If two keys hash to the same bucket, they're stored in a chain (linked list or similar) — this is collision resolution via chaining
+
+Where are the keys actually stored?
+    The hash table maintains an array of buckets.
+    Each bucket is a list (or similar) of key-value pairs.
+    The key is stored along with the value, not separately.
+    Memory layout is not contiguous; each pair lives where the allocator puts it.
+
+What if many keys fall into the same bucket?
+That’s called a hash collision. eg.
+    umap[5] = "a";
+    umap[15] = "b"; // assume hash(5) == hash(15)
+Internally:
+    Bucket 0: [5 => "a", 15 => "b"]
+Now umap.find(15) has to scan that bucket, which becomes O(n) in worst-case.
+
+
+Rehashing: What happens behind the scenes?
+When the number of elements grows and the load factor (i.e., size / buckets) becomes too high:
+    C++ automatically resizes the bucket array (rehashing).
+    All key-value pairs are reinserted into new buckets based on the new hash size.
+This is amortized O(1) but expensive during resize. You can use:
+    umap.rehash(new_bucket_count); // force resize now
+    umap.reserve(1000); // reserve space for 1000 elements
+This avoids runtime surprises during inserts.

@@ -1,0 +1,48 @@
+{
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "ruff.enable": false,
+
+  // lock groups
+  "workbench.editor.closeEmptyGroups": false,
+
+  // vs code scroll bar
+  // "editor.scrollbar.vertical": "hidden",
+  "editor.scrollbar.horizontalScrollbarSize": 100,
+
+  "editor.tokenColorCustomizations": {
+    // "comments": "#6272A4"
+    "comments": "#9b9b9b"
+  },
+
+  "python.terminal.activateEnvironment": false,
+  "python.terminal.activateEnvInCurrentTerminal": false,
+  "terminal.integrated.env.linux": {
+    "VIRTUAL_ENV": "${workspaceFolder}/.venv"
+  },
+
+  // Disable all autocomplete popup menus as you type
+  "editor.quickSuggestions": {
+    "other": "off",
+    "comments": "off",
+    "strings": "off"
+  },
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.tabCompletion": "off",
+
+  // Disable function parameter/signature popups
+  "editor.parameterHints.enabled": false,
+
+  // Change Python Language Server to 'None' to kill underlying intelligence
+  "python.languageServer": "None",
+
+  // Remove distracting visual clutter
+  "editor.minimap.enabled": false,
+  "editor.lightbulb.enabled": "off",
+  "editor.hover.enabled": "off",
+
+  // Prevent auto-importing complex modules you must write from scratch
+  "python.analysis.autoImportCompletions": false
+}

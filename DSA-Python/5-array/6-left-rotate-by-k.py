@@ -1,0 +1,51 @@
+# Given an integer array nums, rotate the array to the left by k steps, where k is non-negative.
+
+
+# brute force - O(n), O(n)
+def left_rotate_by_k_1(nums:list[int], k:int) -> None:
+    n = len(nums)
+    k %= n
+    
+    nums[:] = nums[k:] + nums[:k]
+    
+    
+    
+# optimal - O(n), O(1)
+def left_rotate_by_k_2(nums:list[int], k:int):
+    def reverse_range(start:int, end:int) -> None:
+        while start < end:
+            nums[start], nums[end] = nums[end], nums[start]
+            start += 1
+            end -= 1
+            
+    n = len(nums)
+    k %= n
+    
+    reverse_range(0, n-1)
+    reverse_range(0, n-k-1)
+    reverse_range(n-k, n-1)
+    
+    
+    
+if __name__ == "__main__": 
+    loops = int(input())
+
+    for _ in range(loops):
+        k = int(input())
+        nums = list(map(int, input().split()))
+        
+        # left_rotate_by_k_1(nums, k)
+        left_rotate_by_k_2(nums, k)
+        
+        print(*nums)
+        
+        
+'''
+3
+3
+1 2 3 4 5 6 7
+2
+-1 -100 3 99
+7
+1 2
+'''
