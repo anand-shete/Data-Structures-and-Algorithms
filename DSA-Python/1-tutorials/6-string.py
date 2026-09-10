@@ -8,13 +8,21 @@ c = '''Anand'''
 
 
 # access character - O(1)
-print("character at index 0 from start:", a[0])
-print("indexing starts from -1 in end:", a[-1])
+print("indexing starts at 0 from start:", a[0])
+print("indexing starts at -1 from end:", a[-1])
+print()
 
 
 # convert to ascii - O(1)
 print("char 'A' value in ascii:", ord('A'))
 print("ascii value of 65 in char:", chr(65))
+
+
+# conversion between int and str - O(n²) where n is length of string
+# python limits int and str conversions to maximum 4300 digits (default)
+print('convert 34 to string:',str(34))
+print('convert string to int:',int("34"))
+print()
 
 
 # length of string - O(1)
@@ -28,10 +36,10 @@ print("is s empty:", not s)
 print()
 
 
-# slice string - s[start:stop:step] - O(k)
+# slice string - s[start:stop:step] - O(k) where k is length of sliced string
 # slice always creates a copy since strings are immutable
-# if step > 0, start default: 0, stop default: len(string) else stop=end-1
-# if step < 0, start default: -1, stop default: -(len(string)+1) else stop=end+1
+# if step > 0, start default: 0, stop default: len(string) else stop-1
+# if step < 0, start default: -1, stop default: -len(string)-1 else stop+1
 a = "0123456789"
 print("entire copy:", a[::])
 print("slice from [0,7):", a[:7])
@@ -57,16 +65,16 @@ print('\n')
 name = "   Anand    "
 print("convert to uppercase:", name.upper())
 print("convert to lowercase:", name.lower())
-print("all chars lowercase:", name.islower())
-print("all chars uppercase:", name.isupper())
-print("all chars are alphanumeric:", name.isalnum())
-print("all chars are alphabets:", name.isalpha())
-print("all chars are digits:", name.isdigit())
-print("remove whitespace:",name.strip())
+print("are all chars lowercase:", name.islower())
+print("are all chars uppercase:", name.isupper())
+print("are all chars are alphanumeric:", name.isalnum())
+print("are all chars are alphabets:", name.isalpha())
+print("are all chars are digits:", name.isdigit())
+print("trim whitespace:",name.strip())
 print()
 
 
-# index of first occurrence - O(n.m)
+# index of first occurrence - O(len(str1).len(str2))
 a = "banana"
 print("index of first occurrence 'na':", a.find("na"))
 print("index of first occurrence 'a':", a.find("a"))
@@ -74,23 +82,23 @@ print("index which does not exists:", a.find("absent"))
 print()
 
 
-# count number of occurrences - O(n)
+# count number of occurrences - O(len(str1))
 print("number of occurrences of 'a':", a.count("a"))
 print()
 
 
-# string concatenation - O(n1 + n2)
+# string concatenation - O(len(str1) + len(str2))
 print("concat strings:", 'Hello ' + 'World')
 print()
 
 
-# repeat string - O(n * k)
+# repeat string - O(len(str) * k)
 a = "hello "
 print("repeat string:", a * 3)
 print()
 
 
-# lexicographic comparison - O(min(n1, n2)) but O(1) if lengths differ or first character mismatch
+# lexicographic comparison - O(min(len(str1), len(str2))) but O(1) if lengths differ or first character mismatch
 s1 = "apple"
 s2 = "banana"
 print('s1 == s2', s1 == s2)

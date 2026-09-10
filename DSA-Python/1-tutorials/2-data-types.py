@@ -42,6 +42,9 @@ def func():
 # print(f'outside local scope {x}')
 func()
 
+
+# global variables can only be read inside local scopes
+# to update global variables inside local scopes, use `local` keyword
 y = 90
 def func2():
     global y

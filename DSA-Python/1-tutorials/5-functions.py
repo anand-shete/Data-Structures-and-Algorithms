@@ -65,7 +65,7 @@ print(nums)
 
 
 
-# A lambda function is an anonymous (unnamed) function that only contain a single expression
+# A lambda function (or anonymous function) can contain a single expression
 square = lambda x: x**2
 print(square(4))
 print("")
@@ -76,7 +76,6 @@ print("")
 # 1. They take another function as argument
 double = map(lambda x:x*2, nums)
 print(nums)
-
 
 
 # 2. Or return another function. Function which return a function called closures

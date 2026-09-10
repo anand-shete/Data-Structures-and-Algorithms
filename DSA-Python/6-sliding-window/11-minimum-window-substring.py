@@ -1,14 +1,14 @@
 # Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string "".
 # The testcases will be generated such that the answer is unique.
-
+# first string is s while second string is t in testcases
 
 # Constraints:
 # m == s.length
 # n == t.length
 # 1 <= m, n <= 10⁵
 # s and t consist of uppercase and lowercase English letters.
-
 from collections import Counter
+
 
 
 # brute force - O(n²), O(n)
@@ -40,6 +40,7 @@ def minimum_window_substring_1(s:str, t:str) -> str:
 
 
 
+# sliding window - O(n), O(n)
 def minimum_window_substring_2(s:str, t:str) -> str:
     left, curr_len, n, = 0, 0, len(s)
     ans = ""
@@ -64,7 +65,6 @@ def minimum_window_substring_2(s:str, t:str) -> str:
                 
             left += 1   
             
-            
     return ans
             
     
@@ -74,8 +74,8 @@ if __name__ == "__main__":
     cases = int(input())
 
     for _ in range(cases):
-        t = str(input())
         s = str(input())
+        t = str(input())
         
         # res = minimum_window_substring_1(s, t)
         res = minimum_window_substring_2(s, t)

@@ -7,42 +7,48 @@
 # 1 <= piles.length <= 10⁴
 # piles.length <= h <= 10⁹
 # 1 <= piles[i] <= 10⁹
+from math import ceil
 
 
-
-# brute - O(n), O(1)
+# brute - O(n.max(piles)), O(1)
 def koko_eating_bananas_1(piles: list[int], h:int) -> int:
-    totalHrs = 0
+    k = 1
     
-    for 
+    while not can_eat_in_h(piles, k, h):
+        k += 1 
     
+    return k
 
 
-# binary search - O(n logn), O(1)
-def can_eat_in_h(piles: list[int], h:int, k:int):
-    hours = 0
-    
-    for x in piles:
-        hours += k // x
-        
-    return hours <= h
-    
-    
-    
+
+
+# binary search - O(n log(max(piles))), O(1)
 def koko_eating_bananas_2(piles: list[int], h:int) -> int:
     low, high = 1, max(piles)
-    res = 0
     
     while low < high:
         mid = (low + high) // 2
         
-        if can_eat_in_h(piles, h, mid):
-            low = mid + 1
-            res = mid
-        else:
-            high = mid - 1
+        # higher speed means less hours taken to eat all bananas
+        # if koko can eat at mid hrs, she can eat at mid+1, mid+2, ...
+        if can_eat_in_h(piles, mid, h):
+            result = mid
             
-    return res
+            # to find minimum, decrease high
+            high = mid
+        else:
+            low = mid + 1
+            
+    return low
+
+
+def can_eat_in_h(piles: list[int], mid:int, h:int):
+    hrs_taken = 0
+    
+    for x in piles:
+        hrs_taken += ceil(x / mid)
+        
+    return hrs_taken <= h
 
 
 
@@ -54,6 +60,19 @@ if __name__ == "__main__":
         h = int(input())
         nums = list(map(int, input().split()))
         
-        res = koko_eating_bananas_2(nums, h)
+        res = koko_eating_bananas_1(nums, h)
+        # res = koko_eating_bananas_2(nums, h)
         
         print(res)
+        
+        
+        
+'''
+3
+8
+3 6 7 11
+5
+30 11 23 4 20
+6
+30 11 23 4 20
+'''

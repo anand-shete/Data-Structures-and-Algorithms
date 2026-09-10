@@ -1,8 +1,10 @@
 {
   "[python]": {
-    "editor.defaultFormatter": "ms-python.python"
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false
   },
-  "ruff.enable": false,
 
   // lock groups
   "workbench.editor.closeEmptyGroups": false,
@@ -12,8 +14,7 @@
   "editor.scrollbar.horizontalScrollbarSize": 100,
 
   "editor.tokenColorCustomizations": {
-    // "comments": "#6272A4"
-    "comments": "#9b9b9b"
+    "comments": "#a2a2a2"
   },
 
   "python.terminal.activateEnvironment": false,

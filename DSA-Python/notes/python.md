@@ -43,3 +43,9 @@ print(id(my_list)) # Memory adderss: 139782605605696
 ```
 
 With mutable type like list, Python goes to the existing memory address `139782605605696` and alter its contents. The object itself was mutated.
+
+### Range vs slice
+
+- `range()` deals with integers.
+
+- Slicing deals with sequence indices, where negative values are translated to positions from the end before the slice is evaluated.

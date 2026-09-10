@@ -14,7 +14,7 @@ print()
 # start (optional): start integer (inclusive, defaults to 0)
 # stop (required): end integer (exclusive)
 # step (optional): increment or decrement integer (defaults to 1)
-# loop from start to stop-1 (+ve step) or start to stop+1 (-ve step)
+# If step +ve, range() executes from start to stop-1 else start to stop+1 (-ve step)
 
 
 

@@ -72,9 +72,9 @@ if __name__ == "__main__":
 
 '''
 5
+hello
 the sky is blue
   hello world  
 a good   example
    the sky is blue   
-hello
 '''

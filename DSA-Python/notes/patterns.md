@@ -1,4 +1,4 @@
-# Leetcode Patterns
+## References
 
 [Core Leetcode patterns and problems](https://leetcode.com/discuss/post/8330844/all-leetcode-patterns-that-you-need-to-k-smrv/)
 
@@ -13,13 +13,7 @@
 > Total possible substrings are $\frac{n(n+1)}{2}$
 > Total possible subsequences for a string are $2^n$
 
-#### Range vs slice
-
-- `range()` deals with integers.
-
-- Slicing deals with sequence indices, where negative values are translated to positions from the end before the slice is evaluated.
-
-### Popular Algorithms
+## Algorithms
 
 | Algorithm           | Approach                            | Example Problems                       |
 | ------------------- | ----------------------------------- | -------------------------------------- |
@@ -27,64 +21,74 @@
 | Dutch National Flag | Use 3 pointers to sort 3 elements   | `Sort 0,1 and 2`                       |
 | Boyer Moore Voting  | Element present more than n/2 times | `Majority element`                     |
 
-## Memorize Patterns
+# Leetcode Patterns
 
-### Arrays
+Here are most popular leetcode patterns I experienced
 
-1. Use `unordered_map` to store frequency or `vector  <int>` if constrains are less.
-2. Use 2 pointers for sorted arrays. Even if unsorted, `sort()` can give `n.log(n)` time complexity.
-3. For subarrays, sum till current (prefix sum) can be stored in hashmap
+## \* pattern question
 
-### Binary Search
+- For any pattern, break it into smaller parts and identify the number of spaces, and the number of stars/numbers only and design a logic
+- Think about the spaces and think about how will you print them.
+- Use one-based indexing because it is simple to print i stars on the i-th column (`1` to `n+1`)
 
-- Data must be sorted in predictable order
-- Search space must be **monotonic** in nature (strict increase or strict decrease)
+## Arrays
+
+1. Use `dict` to store frequency of elements, `list` if constrains are less.
+2. Use 2 pointers for sorted arrays. Converting to sorted can give `n.log(n)` time complexity.
+3. For subarrays, sum till current element (prefix sum) can be stored in hashmap
+
+## Binary Search
+
+- Checking an element must split space into two clean halves (all pass then all fail or reverse)
 - Watch for phrases like `maximum of minimum`, `minimum of maximum`, etc.
 
-1. A rotated sorted array will remain sorted even after its divided into 2 parts.
+> A rotated sorted array will remain sorted even after its divided into 2 parts.
 
-### Strings
+## Strings
 
-1. Use `vector` instead of a hashing to store frequency if constraints low.
-2. To covert char `x` to int, do `x - '0'`
-3. Use `s1 += s2` than `s1 = s1 + s1` (slow)
+1. Use `list` instead of a hashing to store frequency if constraints low.
+2. For fast concatenation, append to list and use `"".join()` and avoid `+=` in loop
 
-### Sliding window
+## Sliding window
 
-- Question demands substring or subarray in a arrays,
-- All elements are **positive**
-- Monotonic nature (strictly increasing or decreasing)
+- Question demands substring or subarray in a array/string
+- Only **non-negative numbers**
+- The tracked quantity (sum, count, distinct-elements, etc.) must move monotonically as the window expands/shrinks — not the array values themselves
 
 1. For sliding window frequncy problems, the frequency tracks no. of elements inside the sliding window
 2. `count += right-left+1` will give all possible subarrays ending at right
 
-### Prefix Sum
+### A note on `at_most(k) - at_most(k-1)`
+
+Plain sliding window works because **"at most K" is monotonic** — grow the window, the count-of-distinct-things never goes down; shrink it, never goes up. That monotonicity is what lets you safely move left/right pointers and trust the answer.
+
+Exactly K has no such monotonicity. Hence to solve problems like find **exactly K elements** that satisfy a condition, we use
+
+**Exact count = (count of windows with ≤ K) − (count of windows with ≤ K-1)**
+
+e.g. How many people are 25 y.o. = (count of people ≤ 25) - (count of people ≤ 24)
+
+## Prefix Sum
 
 - Negative values are being used
 - Track current sum that sums/divides till k
 
 1. Current sum = k + Previous sum
 
-### Array notes
+## Linked List
 
-1. Use `pass by value` with vectors
-2. If problem constraints are low(`0 < nums[i] <= 100`), use vector to store freq instead of hashmap.
-3. C++ automatically converts `int` (smaller data type) to `long long` internally while storing in map,set, comparing, etc.
-4. To get a positive mathematically modulo in c++, use formula `(a % b + b) % b`
+1. Last node points to `None` in LL. You cannot read val from `None`
+2. Mostly two pointers can be used to solve LL.
 
-### Linked List
-
-1. Last node points to `nullptr` in LL. You cannot read val from `nullptr`
-2. Since we like C++, manually delete memory leaks in LL problems
-3. Mostly two pointers can be used to solve LL.
-
-### Recursion
+## Recursion
 
 - For recursive algorithms, time complexity calculation is standard
 - Space complexity usually comes from the **call stack depth** w.r.t. input size
-- Space complexity = memory per frame \* call stack depth.
+- Space complexity = memory per frame x call stack depth.
 
-### Bit masking
+> Python's default recursion limit (~1000) can throw `RecursionError` on deep recursion even when logic is correct — use `sys.setrecursionlimit()` or convert to iterative if needed
+
+## Bit masking
 
 - Check if bit set: `mask & (1 << i)`
 - Turn a bit ON: `mask | (1 << i)`
