@@ -10,7 +10,7 @@
 
 
 class Solution:
-    # brute force - O(N.M), O(M)
+    # brute force - O(N.M), O(M) where N=length of input list and M=length of smallest string
     def longest_common_prefix1(self, strs:list[int]) -> str:
         ans = strs[0]
         
@@ -29,18 +29,16 @@ class Solution:
         return ans
     
     
-    # optimal brute force - O(N.M), O(1)
+    # optimal brute force - O(N.M), O(1) where N=length of input list and M=length of smallest string
     def longest_common_prefix2(self, strs:list[int]) -> str:
-        first = strs[0]
         
-        for i in range(len(first)):
-            char = first[i]
+        for i in range(len(strs[0])):
             
             for j in range(1, len(strs)):
-                if i == len(strs[j]) or strs[j][i] != char:
-                    return first[:i]
+                if i == len(strs[j]) or strs[j][i] != strs[0][i]:
+                    return strs[0][:i]
                 
-        return first
+        return strs[0]
     
     
     
@@ -58,9 +56,9 @@ if __name__ == "__main__":
         
 """
 5
-flower flow flight
+flight flow flower
 dog racecar car
 dog doggy
-dog doggy diddy
+boredom bore
 cir car
 """

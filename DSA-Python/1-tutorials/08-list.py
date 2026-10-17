@@ -77,12 +77,12 @@ print("remove all elements:", list1)
 print()
 
 
-# sort list in-place - O(n.logn), O(n) uses Timsort
+# sort list in-place - O(n.logn) and uses O(n) space (python sort use Timsort algorithm)
 list2 = [45, 64, 3, 2, 7, 9]
 print('sort function:',list2.sort())
 
 
-# sort and return list - O(n.logn)
+# sort and return list - O(n.logn), O(n)
 print('sorted fuction: ',sorted(list2))
 
 
@@ -113,15 +113,6 @@ print()
 # check if list empty - O(1)
 print('is list2 empty:', not list2)
 print('\n')
-
-
-
-# list comprehensions allow us to create list quickly
-squares = [x * x for x in range(1,6)]
-print('list comprehension:',squares)
-evens = [x * 2 for x in range(0,5)]
-print('first 5 even numbers:',evens)
-print()
 
 
 # join - O(n) where n is final length of string
@@ -161,3 +152,32 @@ print('\n')
 for idx, ele in enumerate(list2, start=1):
     print(f'{idx}=>{ele}')
 print('\n')
+
+
+# reference assigment
+l1 = [1,2,3]
+l2 = l1
+l2.append(4)
+print("original list:",l1)
+print("both l1 and l2 points to same memory location:",l2)
+print()
+
+
+# shallow copy - O(n), O(n)
+l1 = [1,2,3]
+l2 = l1.copy()      # or l1[:]
+l1.append(4)
+print("original list:",l1)
+print("l1 and l2 point different mem locations:",l2)
+print()
+
+
+# deep copy (requried for nested lists)
+import copy
+l1 = [[1,2], [3,4]]
+l2 = l1
+l3 = copy.deepcopy(l1)
+l1.append(5)
+print("original list:",l1)
+print("without deepcopy:",l2)
+print("without deepcopy:",l3)

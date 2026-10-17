@@ -8,18 +8,17 @@ c = '''Anand'''
 
 
 # access character - O(1)
-print("indexing starts at 0 from start:", a[0])
-print("indexing starts at -1 from end:", a[-1])
+print("char at index 0:", a[0])
+print("python adds len(string) to -ve indexes:", a[-1])
 print()
 
 
 # convert to ascii - O(1)
-print("char 'A' value in ascii:", ord('A'))
+print("char 'A' value in ascii:", ord("A"))
 print("ascii value of 65 in char:", chr(65))
 
 
 # conversion between int and str - O(n²) where n is length of string
-# python limits int and str conversions to maximum 4300 digits (default)
 print('convert 34 to string:',str(34))
 print('convert string to int:',int("34"))
 print()
@@ -36,14 +35,16 @@ print("is s empty:", not s)
 print()
 
 
-# slice string - s[start:stop:step] - O(k) where k is length of sliced string
-# slice always creates a copy since strings are immutable
-# if step > 0, start default: 0, stop default: len(string) else stop-1
-# if step < 0, start default: -1, stop default: -len(string)-1 else stop+1
+# s[start:stop:step] - O(k) where k is length of sliced string (slice always create copy)
+# if step > 0, start defaults to 0,     stop defaults to len(string)
+# if step < 0, start defaults to -1,    stop defaults to -len(string)-1
+# start and given index and take every `step`-th char, exclude stop
 a = "0123456789"
 print("entire copy:", a[::])
 print("slice from [0,7):", a[:7])
 print("slice from idx 7 to end:", a[7:])
+print("slice from idx 7 to end:", a[7:10])
+print("slice from idx 7 to end (wrong becuase walk not possible):", a[7:0])
 print("slice from idx [2, 7):", a[2:7])
 print("slice from idx -4 to end:", a[-4:])
 print("print every 2nd char:", a[::2])
@@ -51,6 +52,15 @@ print("slice every 2nd char from [0,7):", a[0:7:2])
 print("start and stop at defaults direction -ve:", a[::-1])
 print("start from idx 2 step -1:", a[2:-11:-1])
 print("same str above chained slice:", a[::-1][-3:])
+print()
+
+
+# sort string
+# python strings are immutable, so avoid using += in loops for string concat
+s = "   "
+print("standard sort places upercase before lowercase:","".join(sorted(s)))
+print("sort regardless of case:", "".join(sorted(s, key=str.lower)))
+print("sort but place lowercase before uppercase:", "".join(sorted(s, key=lambda ch:ch.isupper())))
 print()
 
 

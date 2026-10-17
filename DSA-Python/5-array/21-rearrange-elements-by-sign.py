@@ -7,9 +7,9 @@
 
 
 # Constraints:
-# 2 <= nums.length <= 2 * 105
+# 2 <= nums.length <= 2 * 10⁵
 # nums.length is even
-# 1 <= |nums[i]| <= 105
+# 1 <= |nums[i]| <= 10⁵
 # nums consists of equal number of positive and negative integers.
 
 

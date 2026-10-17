@@ -2,7 +2,7 @@
 # Note that the product of an array with a single element is the value of that element.
 
 # Constraints:
-# 1 <= nums.length <= 2 * 104
+# 1 <= nums.length <= 2 * 10⁴
 # -10 <= nums[i] <= 10
 # The product of any subarray of nums is guaranteed to fit in a 32-bit integer.
 

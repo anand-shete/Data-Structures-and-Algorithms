@@ -9,7 +9,8 @@ umap = {
     34:92,
     57:99
 }
-print(umap)
+print("empty dict:", {})
+print("unordered map:",umap)
 print()
 
 

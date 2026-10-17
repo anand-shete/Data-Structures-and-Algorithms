@@ -105,3 +105,10 @@ print()
 ptr = 0
 while (ptr := ptr+1) <= 5:
     print(ptr)
+print()
+
+    
+
+# unpacking operator (*)
+arr = [1, 2, 3, 4]
+print(*arr)

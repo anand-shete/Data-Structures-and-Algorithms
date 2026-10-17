@@ -10,6 +10,8 @@ To find the time complexity of a recursive function, you need to calculate the t
 
 $$\text{Total Time Complexity} = \text{Number of Recursive Calls} \times \text{Time Spent per Call}$$
 
+> **Time Spent per Call** is generally O(1) if no loops or string conatenation, etc. involved
+
 ### Quick Reference
 
 When recursion gets more complex (like dividing the problem in half or making multiple branches), use these patterns:
@@ -29,6 +31,8 @@ To find the space complexity of a recursive function, you must calculate the max
 
 $$\text{Total Space Complexity} = \text{Maximum Stack Depth} \times \text{Memory Spent per call}$$
 
+> **Memory Spent per Call** is generally O(1) unless using set, map, list data structures which depend on input size N
+
 ### Quick Reference
 
 | Code Pattern                                       | Maximum Stack Depth                | Space Complexity     |
@@ -37,5 +41,3 @@ $$\text{Total Space Complexity} = \text{Maximum Stack Depth} \times \text{Memory
 | Divides by 2 ($N \rightarrow N/2$)                 | $\log_2 N$                         | $\mathbf{O(\log N)}$ |
 | Fibonacci / Binary Tree                            | Height of the tree ($N$)           | $\mathbf{O(N)}$      |
 | Creating an array of size $N$ inside a linear loop | $N$ frames $\times$ $N$ size array | $\mathbf{O(N^2)}$    |
-
-Would you like to explore Tail Call Optimization (TCO), which allows some languages to run specific recursive functions in $O(1)$ space, or should we practice calculating both time and space on a completely new algorithm?

@@ -7,3 +7,9 @@
 2. Binary search on answers: Koko Eating Bananas
    - If Koko can eat banana in `h` hrs, he can eat all bananas in `h+1` hrs, `h+2` hrs,...
    - To find minimum, use `ans=mid` and `high=mid-1` else to find maximum set `ans=mid` inside `low=mid+1` block
+
+
+## Strings
+1. Sort characters using frequncy
+   - Avoid using `+=` for string concat because strings are immutable unlike in C++
+   - use `"".join(result)` instead

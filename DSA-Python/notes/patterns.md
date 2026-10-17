@@ -51,6 +51,8 @@ Here are most popular leetcode patterns I experienced
 
 ## Sliding window
 
+Sliding window is used when **"at most K" is monotonic** — grow the window, the count-of-distinct-things never goes down; shrink it, never goes up. That monotonicity is what lets you safely move left/right pointers and trust the answer.
+
 - Question demands substring or subarray in a array/string
 - Only **non-negative numbers**
 - The tracked quantity (sum, count, distinct-elements, etc.) must move monotonically as the window expands/shrinks — not the array values themselves
@@ -60,9 +62,7 @@ Here are most popular leetcode patterns I experienced
 
 ### A note on `at_most(k) - at_most(k-1)`
 
-Plain sliding window works because **"at most K" is monotonic** — grow the window, the count-of-distinct-things never goes down; shrink it, never goes up. That monotonicity is what lets you safely move left/right pointers and trust the answer.
-
-Exactly K has no such monotonicity. Hence to solve problems like find **exactly K elements** that satisfy a condition, we use
+Exactly K has no monotonicity. Hence to solve problems like find **exactly K elements** that satisfy a condition, we use
 
 **Exact count = (count of windows with ≤ K) − (count of windows with ≤ K-1)**
 

@@ -20,19 +20,24 @@ Time complexity is essentially a way to measure how the runtime of an algorithm 
 - An algorithm is $\Theta(f(n))$ only if it is both $O(f(n))$ and $\Omega(f(n))$.
 - Example: Merge Sort consistently takes the same amount of effort regardless of how sorted the data is, so it is defined as $\Theta(n \log n)$
 
-#### Example
+### Example
 
-In general, `estimate total operations as the input size n grows`
+```py
+def printi_n(n:int) -> int:
+    for i in range(n):
+        print(i)
+```
 
-1. O(1) – Constant Time
+Above code prints all numbers till given input `n`
+Time complexity of above code is $O(n)$ where n is input size
 
-- E.g. Checking if a number is even or odd. It doesn't matter if the number is `2` or `2,000,000,000,000`; the computer only looks at the last digit.
+1. If input size $n=10⁵$, then
+   $Time\ taken = \frac{10⁵}{10⁷} = 0.01\ second$
 
-2. $O(n)$ – Linear Time
+2. If input size $n=10⁹$
+   $Time\ taken = \frac{10⁹}{10⁷} = 100\ second$ for code to finish execution
 
-- Searching a name in an unsorted list. You might have to look at every single name from start to finish.
-
-When you're dealing with 10 items, the difference between $O(n)$ and $O(n^2)$ is negligible (10 vs 100 operations). But when you're dealing with 1 million items, $O(n)$ is a split second, while $O(n^2)$ could take days to finish
+> Standard python does $10⁷$ computations in one second
 
 ### Time Complexity order
 

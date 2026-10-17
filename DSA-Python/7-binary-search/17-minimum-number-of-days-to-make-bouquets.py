@@ -6,9 +6,9 @@
 
 # Constraints:
 # bloomDay.length == n
-# 1 <= n <= 105
-# 1 <= bloomDay[i] <= 109
-# 1 <= m <= 106
+# 1 <= n <= 10⁵
+# 1 <= bloomDay[i] <= 10⁹
+# 1 <= m <= 10⁶
 # 1 <= k <= n
 # first input line is bloomDay list
 # second input is integer m
@@ -42,6 +42,7 @@ def minimum_number_of_days_to_make_bouquets_2(bloomDay: list[int], m:int, k:int)
         
         if can_make_bouquets(bloomDay, m, mid, k):
             high = mid
+            
         else:
             low = mid + 1
             

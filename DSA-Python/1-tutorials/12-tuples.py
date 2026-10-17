@@ -4,13 +4,15 @@
 # create tuple - O(n)
 tup1 = (40, 30, 20, 3.4)
 tup2 = 10, 20, 30, 40, 50
-tup3 = tuple()
-tup4 = tuple([40, 50, 60])
-tup5 = tuple('abcde')
+tup3 = tuple([40, 50, 60])
+tup4 = tuple('abcde')
+tup5 = 30 ,
 
-print('empty tuple:',tup3)
-print('tuple from list:',tup4)
-print('tuple from string:',tup5)
+print(tup1)
+print("type:",type(tup2).__name__)
+print('tuple from list:',tup3)
+print('tuple from string:',tup4)
+print('comma needed for single elements, ignore if multiple:',tup5)
 print()
 
 

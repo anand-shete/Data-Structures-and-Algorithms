@@ -10,14 +10,6 @@ print()
 
 
 
-# range(start, stop, step)
-# start (optional): start integer (inclusive, defaults to 0)
-# stop (required): end integer (exclusive)
-# step (optional): increment or decrement integer (defaults to 1)
-# If step +ve, range() executes from start to stop-1 else start to stop+1 (-ve step)
-
-
-
 # for loop
 # move in -ve direction with step 1, start at 10 end at 0+1 = 1
 for i in range(10, 0, -1):
@@ -35,6 +27,7 @@ print('\n')
 
 
 # while loop
+# loops use itearable under the hood that exit after StopIteration exception
 n = 5126
 print('reversed:', end=' ')
 while n > 0:
@@ -90,3 +83,16 @@ for x in nums:
         break
 else:
     print("loop did not execute break") 
+print()
+
+
+
+# range(start, stop, step)
+# start (optional): start integer (inclusive, defaults to 0)
+# stop (required): end integer (exclusive)
+# step (optional): increment or decrement integer (defaults to 1)
+# If step +ve, range() executes from start to stop-1 else start to stop+1 (-ve step)
+# above rule is applied for slice too
+print("stop is always required:",[i for i in range(3)])
+print("if 2 arguments passed, assign to start and stop:", [i for i in range(3, 5)])
+print("-ve stop executes till stop+1:",[i for i in range(-1, -10, -1)])
